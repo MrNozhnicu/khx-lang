@@ -2,11 +2,11 @@
 
 <div align="center">
 
-![KHX Logo](https://img.shields.io/badge/KHX-v5.0-blue?style=for-the-badge)
+![KHX Logo](https://img.shields.io/badge/KHX-v5.1-blue?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-**Современный язык программирования с 20+ встроенными модулями**
+**Современный язык программирования с 22 модулями и 300+ функциями**
 
 [Возможности](#-возможности) • [Установка](#-установка) • [Примеры](#-примеры) • [Документация](#-документация)
 
