@@ -43,6 +43,7 @@ Thumbs.db
 # KHX specific
 *.khx~
 test.db
+users.db
 khx.json
 
 # Temporary files
