@@ -593,8 +593,15 @@ class KHXEditor(QMainWindow):
         
         try:
             # Run the KHX GUI interpreter
+            if os.path.exists('src/khx_v5.py'):
+                interpreter = 'src/khx_v5.py'
+            elif os.path.exists('khx_v5.py'):
+                interpreter = 'khx_v5.py'
+            else:
+                interpreter = 'src/khx.py'
+            
             result = subprocess.run(
-                [sys.executable, 'khx_v2.py', self.current_file],
+                [sys.executable, interpreter, self.current_file],
                 capture_output=True,
                 text=True,
                 timeout=30

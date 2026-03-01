@@ -133,8 +133,9 @@ class KHXInterpreterV5(Interpreter):
         
         # Display module status
         for module, status in modules_status.items():
-            status_str = "✓" if status else "✗"
-            print(f"  {status_str} {module:15} {'LOADED' if status else 'NOT AVAILABLE'}")
+            status_str = "[OK]" if status else "[--]"
+            status_text = "LOADED" if status else "NOT AVAILABLE"
+            print(f"  {status_str} {module:15} {status_text}")
         
         print("=" * 70)
         
