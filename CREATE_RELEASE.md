@@ -52,10 +52,23 @@ First stable release of KHX Programming Language!
 ## 📦 Downloads
 
 ### Windows
-- **KHX-Editor-v5.0.0-Windows.zip** (49.46 MB) - Standalone executable with code editor
-  - Extract the ZIP file
-  - Run KHX-Editor.exe
-  - No installation required!
+⚠️ **Файл слишком большой для GitHub (49 MB > 25 MB лимит)**
+
+**Варианты загрузки:**
+
+1. **Google Drive / Яндекс.Диск** (рекомендуется)
+   - Загрузите `KHX-Editor-v5.0.0-Windows.zip` на облако
+   - Добавьте публичную ссылку здесь
+
+2. **Собрать из исходников** (всегда работает):
+   ```bash
+   git clone https://github.com/MrNozhnicu/khx-lang.git
+   cd khx-lang
+   pip install -r requirements.txt
+   pip install pyinstaller
+   python build_exe.py
+   ```
+   Результат: `dist/KHX-Editor.exe`
 
 ### Source Code
 - **Source code (zip)** - Full source code
@@ -63,11 +76,15 @@ First stable release of KHX Programming Language!
 
 ## 🚀 Quick Start
 
-### Option 1: Using the Editor (Windows)
-1. Download `KHX-Editor-v5.0.0-Windows.zip` below
-2. Extract the ZIP file
-3. Run `KHX-Editor.exe`
-4. Start coding in KHX!
+### Option 1: Build from Source (Recommended)
+```bash
+git clone https://github.com/MrNozhnicu/khx-lang.git
+cd khx-lang
+pip install -r requirements.txt
+pip install pyinstaller
+python build_exe.py
+```
+Результат: `dist/KHX-Editor.exe` - готовый редактор!
 
 ### Option 2: From Source
 ```bash
@@ -144,10 +161,7 @@ MIT License - see [LICENSE](https://github.com/MrNozhnicu/khx-lang/blob/main/LIC
 **Star ⭐ this repo if you like it!**
 ```
 
-3. **Прикрепите файл**: 
-   - Нажмите "Attach binaries by dropping them here or selecting them"
-   - Выберите файл: `C:\Users\Matvey\Desktop\KHX\dist\KHX-Editor-v5.0.0-Windows.zip`
-   - Это ZIP архив с .exe файлом внутри (49.46 MB)
+3. **НЕ прикрепляйте .exe файл** (он больше 25 MB лимита GitHub)
 
 4. **Опубликуйте**:
    - Нажмите "Publish release"

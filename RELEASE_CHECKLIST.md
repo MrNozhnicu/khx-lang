@@ -23,9 +23,10 @@ KHX v5.0 - Complete Release 🎉
 **Description:**
 Скопируйте из файла `CREATE_RELEASE.md` (начиная с "# KHX v5.0...")
 
-### 3. Прикрепите файл:
-- Нажмите "Attach binaries..."
-- Выберите: `C:\Users\Matvey\Desktop\KHX\dist\KHX-Editor-v5.0.0-Windows.zip`
+### 3. НЕ прикрепляйте файл:
+- ❌ GitHub лимит: 25 MB
+- ❌ Наш файл: 49 MB
+- ✅ Пользователи соберут из исходников (см. инструкцию в Description)
 
 ### 4. Опубликуйте:
 - Нажмите "Publish release"
