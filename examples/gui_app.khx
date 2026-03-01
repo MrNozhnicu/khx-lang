@@ -1,0 +1,11 @@
+// GUI приложение на KHX
+
+print("Создание GUI приложения...")
+
+let window = create_window("KHX GUI App", 800, 600)
+add_label(window, "Добро пожаловать в KHX!")
+add_button(window, "Нажми меня")
+add_input(window, "Введите текст")
+
+show_window(window)
+print("Окно создано!")

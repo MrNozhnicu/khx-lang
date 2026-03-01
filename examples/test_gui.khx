@@ -1,0 +1,23 @@
+// Simple GUI Test
+
+func main() {
+    print("Creating test window...")
+    
+    let win = create_window("Test Window", 500, 400)
+    
+    let label1 = add_label(win, "KHX GUI Test")
+    let label2 = add_label(win, "This is a test window")
+    
+    let input1 = add_input(win, "Enter your name")
+    
+    let btn1 = add_button(win, "Button 1")
+    let btn2 = add_button(win, "Button 2")
+    let btn3 = add_button(win, "Button 3")
+    
+    print("Window created!")
+    
+    show_window(win)
+    run_app(win)
+}
+
+main()

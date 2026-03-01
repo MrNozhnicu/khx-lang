@@ -1,0 +1,36 @@
+// KHX Browser with GUI
+
+func main() {
+    print("Starting KHX Browser...")
+    
+    // Create main browser window
+    let browser = create_window("KHX Browser", 1200, 800)
+    
+    // Add title
+    let title = add_label(browser, "KHX Browser v1.0")
+    
+    // Add address bar
+    let address = add_input(browser, "Enter URL...")
+    
+    // Add navigation buttons
+    let btn_back = add_button(browser, "< Back")
+    let btn_forward = add_button(browser, "Forward >")
+    let btn_reload = add_button(browser, "Reload")
+    let btn_home = add_button(browser, "Home")
+    
+    // Add content area
+    let content = add_label(browser, "Welcome to KHX Browser!")
+    
+    // Add status bar
+    let status = add_label(browser, "Ready")
+    
+    print("Browser window created!")
+    
+    // Show window
+    show_window(browser)
+    
+    // Run application
+    run_app(browser)
+}
+
+main()

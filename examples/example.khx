@@ -1,0 +1,59 @@
+// Пример программы на KHX
+
+// Переменные с типами
+let x: int = 42
+let message = "Привет из KHX!"
+
+print(message)
+print(x)
+
+// Функция для вычисления факториала
+func factorial(n: int) -> int {
+    if (n <= 1) {
+        return 1
+    } else {
+        return n * factorial(n - 1)
+    }
+}
+
+// Функция Фибоначчи
+func fibonacci(n: int) -> int {
+    if (n <= 1) {
+        return n
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+// Тестируем функции
+print(factorial(5))
+print(fibonacci(10))
+
+// Циклы
+let counter = 0
+while (counter < 5) {
+    print(counter)
+    counter = counter + 1
+}
+
+// Условия
+let age = 25
+if (age >= 18) {
+    print("Совершеннолетний")
+} else {
+    print("Несовершеннолетний")
+}
+
+// Математические операции
+let a = 10
+let b = 3
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+
+// Логические операции
+let isTrue = true
+let isFalse = false
+print(isTrue and isFalse)
+print(isTrue or isFalse)
+print(not isFalse)

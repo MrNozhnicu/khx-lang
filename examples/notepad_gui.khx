@@ -1,0 +1,30 @@
+// KHX Notepad - Text Editor
+
+func main() {
+    print("Starting KHX Notepad...")
+    
+    // Create window
+    let notepad = create_window("KHX Notepad", 800, 600)
+    
+    // Add title
+    let title = add_label(notepad, "KHX Notepad - Untitled")
+    
+    // Add buttons
+    let btn_new = add_button(notepad, "New")
+    let btn_open = add_button(notepad, "Open")
+    let btn_save = add_button(notepad, "Save")
+    
+    // Add text area
+    let editor = add_input(notepad, "Start typing...")
+    
+    // Add status
+    let status = add_label(notepad, "Ready")
+    
+    print("Notepad created!")
+    
+    // Show and run
+    show_window(notepad)
+    run_app(notepad)
+}
+
+main()

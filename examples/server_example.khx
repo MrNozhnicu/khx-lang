@@ -1,0 +1,37 @@
+// KHX Web Server Example
+
+func main() {
+    print("=== KHX Web Server ===")
+    print("")
+    
+    // Create server
+    print("Creating server...")
+    let server = create_server("localhost", 8080)
+    
+    // Add routes
+    print("Adding routes...")
+    add_route(server, "/")
+    add_route(server, "/about")
+    add_route(server, "/api")
+    
+    // Start server
+    print("Starting server...")
+    let result = start_server(server)
+    
+    if (result == 1) {
+        print("")
+        print("Server is running!")
+        print("Visit: http://localhost:8080")
+        print("")
+        print("Available routes:")
+        print("  - http://localhost:8080/")
+        print("  - http://localhost:8080/about")
+        print("  - http://localhost:8080/api")
+        print("")
+        print("Press Ctrl+C to stop server")
+    } else {
+        print("Failed to start server!")
+    }
+}
+
+main()

@@ -1,0 +1,105 @@
+// KHX v4.0 - Demo of ALL Features!
+
+func main() {
+    print("========================================")
+    print("KHX v4.0 - ALL FEATURES DEMO")
+    print("========================================")
+    print("")
+    
+    // 1. Database
+    print("=== 1. DATABASE ===")
+    let db = connect_database("sqlite", "test.db")
+    db_execute(db, "CREATE TABLE IF NOT EXISTS users (id INTEGER, name TEXT)")
+    print("Database connected and table created!")
+    print("")
+    
+    // 2. Networking
+    print("=== 2. NETWORKING ===")
+    let api = create_rest_client("https://api.github.com")
+    let status = http_get(api, "/")
+    print("HTTP GET status: " + status)
+    print("")
+    
+    // 3. Machine Learning
+    print("=== 3. MACHINE LEARNING ===")
+    let nn = create_neural_network()
+    ml_train(nn, 5)
+    
+    let nlp = create_nlp()
+    let sentiment = nlp_sentiment(nlp, "I love KHX programming!")
+    print("Sentiment analysis complete!")
+    print("")
+    
+    // 4. Cryptography
+    print("=== 4. CRYPTOGRAPHY ===")
+    let hash = sha256("hello world")
+    print("SHA256 hash created")
+    
+    let token = generate_token(16)
+    print("Random token generated")
+    
+    let jwt = create_jwt("my_secret_key")
+    print("JWT token created")
+    
+    let password_hash = hash_password("mypassword123")
+    print("Password hashed securely")
+    print("")
+    
+    // 5. Game Engine
+    print("=== 5. GAME ENGINE ===")
+    let game = create_game(800, 600, "KHX Game")
+    add_sprite(game, "player.png", 100, 100)
+    add_sprite(game, "enemy.png", 300, 200)
+    print("Game created with sprites!")
+    print("")
+    
+    // 6. Operating System
+    print("=== 6. OPERATING SYSTEM ===")
+    let os = create_os("DemoOS")
+    boot_os(os)
+    let pid = create_process(os, "demo_app", "app_code")
+    print("OS booted with process!")
+    shutdown_os(os)
+    print("")
+    
+    // 7. Web Server
+    print("=== 7. WEB SERVER ===")
+    let server = create_server("localhost", 8080)
+    print("Server created on port 8080")
+    print("")
+    
+    // 8. WebSocket
+    print("=== 8. WEBSOCKET ===")
+    let ws = create_websocket("ws://localhost:8080")
+    print("WebSocket client created")
+    print("")
+    
+    // 9. Utilities
+    print("=== 9. UTILITIES ===")
+    let rand = random()
+    print("Random number generated")
+    
+    let timestamp = time()
+    print("Current timestamp retrieved")
+    
+    let encoded = base64_encode("Hello KHX!")
+    print("Base64 encoding done")
+    print("")
+    
+    print("========================================")
+    print("ALL FEATURES DEMONSTRATED!")
+    print("========================================")
+    print("")
+    print("KHX v4.0 includes:")
+    print("- Database (SQL)")
+    print("- REST API Client")
+    print("- Machine Learning & NLP")
+    print("- Cryptography & Security")
+    print("- Game Engine")
+    print("- Operating System")
+    print("- Web Server")
+    print("- WebSocket")
+    print("- And much more!")
+}
+
+main()

@@ -1,0 +1,17 @@
+// Простая игра на KHX
+
+print("=== KHX Game Engine ===")
+print("")
+
+let game = create_game(800, 600, "Space Shooter")
+print("Игра создана: Space Shooter")
+
+add_sprite(game, "player.png", 400, 500)
+print("Игрок добавлен")
+
+add_sprite(game, "enemy.png", 400, 100)
+print("Враг добавлен")
+
+print("")
+print("Игра готова к запуску!")
+print("(Используйте run_game для запуска)")

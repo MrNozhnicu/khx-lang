@@ -1,0 +1,32 @@
+// KHX GUI Example - Simple Calculator
+
+func main() {
+    print("Creating GUI Calculator...")
+    
+    // Create window
+    let win = create_window("KHX Calculator", 400, 300)
+    
+    // Add title label
+    let title = add_label(win, "KHX Calculator v1.0")
+    
+    // Add input fields
+    let input1 = add_input(win, "Enter first number")
+    let input2 = add_input(win, "Enter second number")
+    
+    // Add result label
+    let result = add_label(win, "Result: ")
+    
+    // Add buttons
+    let btn_add = add_button(win, "Add (+)")
+    let btn_sub = add_button(win, "Subtract (-)")
+    let btn_mul = add_button(win, "Multiply (*)")
+    let btn_div = add_button(win, "Divide (/)")
+    
+    // Show window
+    show_window(win)
+    
+    // Run application
+    run_app(win)
+}
+
+main()

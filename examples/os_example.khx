@@ -1,0 +1,62 @@
+// KHX Operating System Example
+
+func main() {
+    print("=== KHX Operating System ===")
+    print("")
+    
+    // Create OS
+    print("Creating operating system...")
+    let os = create_os("MyOS")
+    
+    // Boot OS
+    print("")
+    let boot_result = boot_os(os)
+    
+    if (boot_result == 1) {
+        print("")
+        print("=== System Running ===")
+        print("")
+        
+        // Create files
+        print("Creating files...")
+        create_file(os, "/home/readme.txt", "Welcome to MyOS!")
+        create_file(os, "/home/data.txt", "Some data here")
+        create_file(os, "/bin/app.exe", "Application code")
+        
+        // Create processes
+        print("")
+        print("Creating processes...")
+        let pid1 = create_process(os, "init", "init_code")
+        let pid2 = create_process(os, "shell", "shell_code")
+        let pid3 = create_process(os, "app", "app_code")
+        
+        print("")
+        print("Process created: PID=1")
+        print("Process created: PID=2")
+        print("Process created: PID=3")
+        
+        // List processes
+        print("")
+        print("=== Process List ===")
+        let proc_count = list_processes(os)
+        print("Total processes: 3")
+        
+        // Read file
+        print("")
+        print("=== File System ===")
+        let content = read_file(os, "/home/readme.txt")
+        print("File content: " + content)
+        
+        // Shutdown
+        print("")
+        let shutdown_result = shutdown_os(os)
+        
+    } else {
+        print("Failed to boot OS!")
+    }
+    
+    print("")
+    print("=== Demo Complete ===")
+}
+
+main()

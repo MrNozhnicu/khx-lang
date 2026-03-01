@@ -1,0 +1,38 @@
+// Простой калькулятор
+
+func add(a: int, b: int) -> int {
+    return a + b
+}
+
+func subtract(a: int, b: int) -> int {
+    return a - b
+}
+
+func multiply(a: int, b: int) -> int {
+    return a * b
+}
+
+func divide(a: int, b: int) -> int {
+    if (b == 0) {
+        print("Ошибка: деление на ноль!")
+        return 0
+    }
+    return a / b
+}
+
+print("=== Калькулятор KHX ===")
+print("")
+
+let x = 10
+let y = 5
+
+print("Числа: 10 и 5")
+print("")
+print("Сложение:")
+print(add(x, y))
+print("Вычитание:")
+print(subtract(x, y))
+print("Умножение:")
+print(multiply(x, y))
+print("Деление:")
+print(divide(x, y))

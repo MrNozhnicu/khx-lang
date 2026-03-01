@@ -1,0 +1,68 @@
+// Complete Operating System with GUI
+
+func main() {
+    print("=== KHX Complete OS Demo ===")
+    print("")
+    
+    // Create OS
+    let os = create_os("KHX-Desktop")
+    
+    // Boot OS
+    boot_os(os)
+    
+    print("")
+    print("=== Setting up system ===")
+    
+    // Create file system
+    create_file(os, "/home/user/documents/file1.txt", "Document 1")
+    create_file(os, "/home/user/documents/file2.txt", "Document 2")
+    create_file(os, "/home/user/desktop/app.exe", "Application")
+    create_file(os, "/bin/system.exe", "System binary")
+    create_file(os, "/tmp/cache.tmp", "Temporary data")
+    
+    // Create system processes
+    let pid_kernel = create_process(os, "kernel", "kernel_code")
+    let pid_shell = create_process(os, "shell", "shell_code")
+    let pid_gui = create_process(os, "gui_manager", "gui_code")
+    let pid_fs = create_process(os, "filesystem", "fs_code")
+    
+    print("")
+    print("=== System Processes ===")
+    list_processes(os)
+    
+    // Create GUI for OS
+    print("")
+    print("=== Starting GUI ===")
+    
+    let win = create_window("KHX Desktop OS", 800, 600)
+    
+    let title = add_label(win, "=== KHX Desktop Operating System ===")
+    let subtitle = add_label(win, "Version 1.0")
+    
+    let info1 = add_label(win, "System: KHX-Desktop")
+    let info2 = add_label(win, "Processes: 4 running")
+    let info3 = add_label(win, "Memory: 256 MB")
+    let info4 = add_label(win, "Disk: 10 GB")
+    
+    let btn_files = add_button(win, "File Manager")
+    let btn_terminal = add_button(win, "Terminal")
+    let btn_apps = add_button(win, "Applications")
+    let btn_settings = add_button(win, "Settings")
+    let btn_shutdown = add_button(win, "Shutdown")
+    
+    let status = add_label(win, "System ready. All services running.")
+    
+    print("")
+    print("GUI created!")
+    print("OS is fully operational!")
+    
+    show_window(win)
+    run_app(win)
+    
+    // Shutdown when GUI closes
+    print("")
+    print("Shutting down OS...")
+    shutdown_os(os)
+}
+
+main()

@@ -1,0 +1,15 @@
+# KHX Programming Language - Dependencies
+
+# GUI Framework (для редактора и GUI модуля)
+PyQt5==5.15.9
+QScintilla==2.13.4
+
+# Data Science (для графиков)
+numpy>=1.21.0
+matplotlib>=3.5.0
+
+# Networking (опционально)
+requests>=2.28.0
+
+# Для сборки .exe
+pyinstaller>=5.0.0
