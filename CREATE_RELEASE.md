@@ -52,9 +52,10 @@ First stable release of KHX Programming Language!
 ## 📦 Downloads
 
 ### Windows
-- **KHX-Editor.exe** (49.76 MB) - Standalone executable with code editor
-  - No installation required
-  - Just download and run!
+- **KHX-Editor-v5.0.0-Windows.zip** (49.46 MB) - Standalone executable with code editor
+  - Extract the ZIP file
+  - Run KHX-Editor.exe
+  - No installation required!
 
 ### Source Code
 - **Source code (zip)** - Full source code
@@ -63,9 +64,10 @@ First stable release of KHX Programming Language!
 ## 🚀 Quick Start
 
 ### Option 1: Using the Editor (Windows)
-1. Download `KHX-Editor.exe` below
-2. Double-click to run
-3. Start coding in KHX!
+1. Download `KHX-Editor-v5.0.0-Windows.zip` below
+2. Extract the ZIP file
+3. Run `KHX-Editor.exe`
+4. Start coding in KHX!
 
 ### Option 2: From Source
 ```bash
@@ -144,7 +146,8 @@ MIT License - see [LICENSE](https://github.com/MrNozhnicu/khx-lang/blob/main/LIC
 
 3. **Прикрепите файл**: 
    - Нажмите "Attach binaries by dropping them here or selecting them"
-   - Выберите файл: `C:\Users\Matvey\Desktop\KHX\dist\KHX-Editor.exe`
+   - Выберите файл: `C:\Users\Matvey\Desktop\KHX\dist\KHX-Editor-v5.0.0-Windows.zip`
+   - Это ZIP архив с .exe файлом внутри (49.46 MB)
 
 4. **Опубликуйте**:
    - Нажмите "Publish release"
