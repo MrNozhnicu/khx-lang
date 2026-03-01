@@ -100,6 +100,95 @@ class KHXDataFrame:
         
         print(f"[DataFrame] Exported to {filename}")
         return True
+    
+    def sort_by(self, column, ascending=True):
+        """Sort by column"""
+        sorted_data = sorted(self.data, key=lambda x: x.get(column, 0), reverse=not ascending)
+        return KHXDataFrame(sorted_data)
+    
+    def drop_column(self, column):
+        """Drop column"""
+        new_data = []
+        for row in self.data:
+            new_row = {k: v for k, v in row.items() if k != column}
+            new_data.append(new_row)
+        return KHXDataFrame(new_data)
+    
+    def rename_column(self, old_name, new_name):
+        """Rename column"""
+        new_data = []
+        for row in self.data:
+            new_row = {(new_name if k == old_name else k): v for k, v in row.items()}
+            new_data.append(new_row)
+        return KHXDataFrame(new_data)
+    
+    def add_column(self, column_name, values):
+        """Add new column"""
+        for i, row in enumerate(self.data):
+            if i < len(values):
+                row[column_name] = values[i]
+        if column_name not in self.columns:
+            self.columns.append(column_name)
+        return self
+    
+    def unique(self, column):
+        """Get unique values in column"""
+        values = [row.get(column) for row in self.data]
+        return list(set(values))
+    
+    def value_counts(self, column):
+        """Count occurrences of each value"""
+        counts = {}
+        for row in self.data:
+            val = row.get(column)
+            counts[val] = counts.get(val, 0) + 1
+        return counts
+    
+    def merge(self, other_df, on_column):
+        """Merge with another DataFrame"""
+        merged = []
+        for row1 in self.data:
+            for row2 in other_df.data:
+                if row1.get(on_column) == row2.get(on_column):
+                    merged_row = {**row1, **row2}
+                    merged.append(merged_row)
+        return KHXDataFrame(merged)
+    
+    def fillna(self, value=0):
+        """Fill missing values"""
+        new_data = []
+        for row in self.data:
+            new_row = {k: (v if v is not None else value) for k, v in row.items()}
+            new_data.append(new_row)
+        return KHXDataFrame(new_data)
+    
+    def dropna(self):
+        """Drop rows with missing values"""
+        new_data = [row for row in self.data if all(v is not None for v in row.values())]
+        return KHXDataFrame(new_data)
+    
+    def std(self, column):
+        """Standard deviation"""
+        values = [row.get(column, 0) for row in self.data if isinstance(row.get(column), (int, float))]
+        if values:
+            return statistics.stdev(values) if len(values) > 1 else 0
+        return 0
+    
+    def corr(self, col1, col2):
+        """Correlation between two columns"""
+        values1 = [row.get(col1, 0) for row in self.data if isinstance(row.get(col1), (int, float))]
+        values2 = [row.get(col2, 0) for row in self.data if isinstance(row.get(col2), (int, float))]
+        
+        if len(values1) != len(values2) or len(values1) < 2:
+            return 0
+        
+        mean1 = statistics.mean(values1)
+        mean2 = statistics.mean(values2)
+        
+        numerator = sum((values1[i] - mean1) * (values2[i] - mean2) for i in range(len(values1)))
+        denominator = (sum((v - mean1) ** 2 for v in values1) * sum((v - mean2) ** 2 for v in values2)) ** 0.5
+        
+        return numerator / denominator if denominator != 0 else 0
 
 
 class KHXArray:

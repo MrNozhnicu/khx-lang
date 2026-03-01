@@ -1,36 +1,34 @@
 """
-KHX Audio/Video Processing Module
-Обработка аудио и видео
+KHX Audio Module - Работа со звуком и музыкой
 """
 
 import time
 
-# Storage
-audio_objects = {}
-video_objects = {}
-audio_counter = 0
-video_counter = 0
-
 
 class AudioObject:
     """Аудио объект"""
+    
     def __init__(self, filename):
         self.filename = filename
-        self.effects = []
         self.volume = 1.0
         self.playing = False
+        self.loop = False
+        self.position = 0
+        self.duration = 180  # 3 минуты
         print(f"[Audio] Загружен: {filename}")
     
     def apply_effect(self, effect_name, intensity=0.5):
         """Применить эффект"""
-        self.effects.append({'name': effect_name, 'intensity': intensity})
-        print(f"[Audio] Применен эффект: {effect_name} (интенсивность: {intensity})")
-        return True
+        effects = ["reverb", "echo", "distortion", "chorus", "flanger", "delay"]
+        if effect_name in effects:
+            print(f"[Audio] Эффект '{effect_name}' применен (интенсивность: {intensity})")
+            return True
+        return False
     
     def set_volume(self, volume):
-        """Установить громкость"""
+        """Установить громкость (0.0 - 1.0)"""
         self.volume = max(0.0, min(1.0, volume))
-        print(f"[Audio] Громкость: {self.volume * 100}%")
+        print(f"[Audio] Громкость: {self.volume * 100:.0f}%")
         return True
     
     def play(self):
@@ -48,60 +46,115 @@ class AudioObject:
     def stop(self):
         """Остановить"""
         self.playing = False
+        self.position = 0
         print(f"[Audio] Остановлено")
         return True
     
-    def export(self, output_file):
-        """Экспорт"""
-        print(f"[Audio] Экспорт: {output_file}")
-        print(f"[Audio] Применено эффектов: {len(self.effects)}")
-        return True
-
-
-class VideoObject:
-    """Видео объект"""
-    def __init__(self, filename):
-        self.filename = filename
-        self.subtitles = []
-        self.filters = []
-        self.fps = 30
-        self.duration = 0
-        print(f"[Video] Загружен: {filename}")
-    
-    def add_subtitle(self, text, start, duration):
-        """Добавить субтитры"""
-        self.subtitles.append({
-            'text': text,
-            'start': start,
-            'duration': duration
-        })
-        print(f"[Video] Субтитры добавлены: '{text}' ({start}s - {start+duration}s)")
+    def seek(self, position):
+        """Перемотать на позицию (секунды)"""
+        self.position = max(0, min(self.duration, position))
+        print(f"[Audio] Позиция: {self.position}s")
         return True
     
-    def apply_filter(self, filter_name, params=None):
-        """Применить фильтр"""
-        self.filters.append({'name': filter_name, 'params': params or {}})
-        print(f"[Video] Применен фильтр: {filter_name}")
+    def set_loop(self, loop):
+        """Установить зацикливание"""
+        self.loop = loop
+        print(f"[Audio] Зацикливание: {'вкл' if loop else 'выкл'}")
         return True
     
-    def set_fps(self, fps):
-        """Установить FPS"""
-        self.fps = fps
-        print(f"[Video] FPS: {fps}")
+    def fade_in(self, duration=2.0):
+        """Плавное появление"""
+        print(f"[Audio] Fade in ({duration}s)")
+        return True
+    
+    def fade_out(self, duration=2.0):
+        """Плавное затухание"""
+        print(f"[Audio] Fade out ({duration}s)")
+        return True
+    
+    def get_info(self):
+        """Получить информацию"""
+        return {
+            "filename": self.filename,
+            "duration": self.duration,
+            "position": self.position,
+            "volume": self.volume,
+            "playing": self.playing,
+            "loop": self.loop
+        }
+    
+    def set_speed(self, speed):
+        """Установить скорость воспроизведения"""
+        print(f"[Audio] Скорость: {speed}x")
+        return True
+    
+    def normalize(self):
+        """Нормализовать громкость"""
+        print(f"[Audio] Нормализация выполнена")
         return True
     
     def trim(self, start, end):
-        """Обрезать видео"""
-        print(f"[Video] Обрезка: {start}s - {end}s")
+        """Обрезать аудио"""
+        print(f"[Audio] Обрезано: {start}s - {end}s")
         return True
     
-    def export(self, output_file, codec="h264"):
-        """Экспорт"""
-        print(f"[Video] Экспорт: {output_file}")
-        print(f"[Video] Кодек: {codec}")
-        print(f"[Video] Субтитров: {len(self.subtitles)}")
-        print(f"[Video] Фильтров: {len(self.filters)}")
+    def export(self, filename, format="mp3"):
+        """Экспортировать в файл"""
+        formats = ["mp3", "wav", "ogg", "flac"]
+        if format in formats:
+            print(f"[Audio] Экспортировано: {filename}.{format}")
+            return True
+        return False
+
+
+class AudioMixer:
+    """Аудио микшер"""
+    
+    def __init__(self):
+        self.tracks = []
+        self.master_volume = 1.0
+        print(f"[Mixer] Инициализирован")
+    
+    def add_track(self, audio):
+        """Добавить трек"""
+        self.tracks.append(audio)
+        print(f"[Mixer] Трек добавлен: {audio.filename}")
+        return len(self.tracks) - 1
+    
+    def remove_track(self, index):
+        """Удалить трек"""
+        if 0 <= index < len(self.tracks):
+            track = self.tracks.pop(index)
+            print(f"[Mixer] Трек удален: {track.filename}")
+            return True
+        return False
+    
+    def set_master_volume(self, volume):
+        """Установить общую громкость"""
+        self.master_volume = max(0.0, min(1.0, volume))
+        print(f"[Mixer] Общая громкость: {self.master_volume * 100:.0f}%")
         return True
+    
+    def play_all(self):
+        """Воспроизвести все треки"""
+        for track in self.tracks:
+            track.play()
+        print(f"[Mixer] Воспроизведение {len(self.tracks)} треков")
+        return True
+    
+    def stop_all(self):
+        """Остановить все треки"""
+        for track in self.tracks:
+            track.stop()
+        print(f"[Mixer] Все треки остановлены")
+        return True
+
+
+# Global storage
+audio_objects = {}
+audio_counter = 0
+mixers = {}
+mixer_counter = 0
 
 
 def load_audio(filename):
@@ -118,59 +171,36 @@ def get_audio(audio_id):
     return audio_objects.get(audio_id)
 
 
-def load_video(filename):
-    """Загрузить видео файл"""
-    global video_counter
-    video_id = f"video_{video_counter}"
-    video_counter += 1
-    video_objects[video_id] = VideoObject(filename)
-    return video_id
+def create_mixer():
+    """Создать микшер"""
+    global mixer_counter
+    mixer_id = f"mixer_{mixer_counter}"
+    mixer_counter += 1
+    mixers[mixer_id] = AudioMixer()
+    return mixer_id
 
 
-def get_video(video_id):
-    """Получить видео объект"""
-    return video_objects.get(video_id)
-
-
-def record_audio(duration, output_file):
-    """Записать аудио с микрофона"""
-    print(f"[Audio] Запись {duration}s...")
-    time.sleep(min(duration, 0.5))  # Симуляция
-    print(f"[Audio] Сохранено: {output_file}")
-    return load_audio(output_file)
-
-
-def record_screen(duration, output_file):
-    """Записать экран"""
-    print(f"[Video] Запись экрана {duration}s...")
-    time.sleep(min(duration, 0.5))  # Симуляция
-    print(f"[Video] Сохранено: {output_file}")
-    return load_video(output_file)
-
-
-def create_stream(url, stream_type="rtmp"):
-    """Создать стрим"""
-    print(f"[Stream] Создан {stream_type} стрим: {url}")
-    return {"url": url, "type": stream_type, "active": False}
+def get_mixer(mixer_id):
+    """Получить микшер"""
+    return mixers.get(mixer_id)
 
 
 if __name__ == "__main__":
-    print("=== KHX Audio/Video Module Test ===\n")
+    print("=== KHX Audio Module Test ===\n")
     
-    # Тест аудио
-    audio = load_audio("song.mp3")
-    audio_obj = get_audio(audio)
-    audio_obj.apply_effect("reverb", 0.7)
-    audio_obj.set_volume(0.8)
-    audio_obj.play()
-    audio_obj.export("output.mp3")
+    # Загрузка аудио
+    audio_id = load_audio("song.mp3")
+    audio = get_audio(audio_id)
     
-    print()
+    # Управление воспроизведением
+    audio.play()
+    audio.set_volume(0.8)
+    audio.set_loop(True)
+    audio.apply_effect("reverb", 0.7)
     
-    # Тест видео
-    video = load_video("movie.mp4")
-    video_obj = get_video(video)
-    video_obj.add_subtitle("Hello World", 5, 3)
-    video_obj.apply_filter("blur", {"radius": 5})
-    video_obj.set_fps(60)
-    video_obj.export("output.mp4", "h265")
+    # Микшер
+    mixer_id = create_mixer()
+    mixer = get_mixer(mixer_id)
+    mixer.add_track(audio)
+    mixer.set_master_volume(0.9)
+    mixer.play_all()
