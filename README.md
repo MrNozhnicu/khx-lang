@@ -233,8 +233,8 @@ MIT License - смотрите [LICENSE](LICENSE) для деталей
 
 ## 📞 Контакты
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Issues: [GitHub Issues](https://github.com/yourusername/khx-lang/issues)
+- GitHub: [@yourusername](https://github.com/MrNozhnicu)
+- Issues: [GitHub Issues](https://github.com/MrNozhnicu/khx-lang/issues)
 
 ---
 
