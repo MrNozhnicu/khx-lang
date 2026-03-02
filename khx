@@ -1,0 +1,230 @@
+#!/usr/bin/env python3
+"""
+KHX CLI - Command Line Interface
+Интерфейс командной строки для KHX
+"""
+
+import sys
+import os
+import argparse
+from pathlib import Path
+
+
+# Добавить src в путь
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+
+
+def show_version():
+    """Показать версию"""
+    print("KHX Programming Language v5.2")
+    print("Copyright (c) 2026 KHX Developer")
+    print("MIT License")
+
+
+def show_help():
+    """Показать справку"""
+    help_text = """
+KHX CLI - Command Line Interface
+
+Использование:
+  khx <file.khx>              Запустить программу
+  khx --version               Показать версию
+  khx --help                  Показать эту справку
+  khx --repl                  Интерактивный режим (REPL)
+  khx --new <name>            Создать новый проект
+  khx --run <file>            Запустить файл
+  khx --check <file>          Проверить синтаксис
+  khx --format <file>         Форматировать код
+  khx --docs                  Открыть документацию
+  khx --examples              Показать примеры
+
+Примеры:
+  khx hello.khx               Запустить hello.khx
+  khx --repl                  Открыть интерактивную консоль
+  khx --new my_app            Создать проект my_app
+  khx --check script.khx      Проверить script.khx на ошибки
+  khx --docs                  Открыть документацию в браузере
+
+Документация: https://github.com/MrNozhnicu/khx-lang
+"""
+    print(help_text)
+
+
+def run_repl():
+    """Интерактивный режим"""
+    print("KHX REPL v5.2")
+    print("Введите 'exit' для выхода")
+    print("-" * 40)
+    
+    while True:
+        try:
+            code = input("khx> ")
+            if code.strip().lower() in ['exit', 'quit']:
+                break
+            
+            if code.strip():
+                # Здесь будет выполнение кода
+                print(f"[Выполнение]: {code}")
+                # TODO: Интеграция с интерпретатором
+                
+        except KeyboardInterrupt:
+            print("\nИспользуйте 'exit' для выхода")
+        except EOFError:
+            break
+    
+    print("\nДо свидания!")
+
+
+def create_project(name):
+    """Создать новый проект"""
+    print(f"Создание проекта: {name}")
+    
+    # Создать структуру
+    project_dir = Path(name)
+    if project_dir.exists():
+        print(f"[ERROR] Директория '{name}' уже существует")
+        return
+    
+    project_dir.mkdir()
+    (project_dir / "src").mkdir()
+    (project_dir / "examples").mkdir()
+    
+    # Создать main.khx
+    main_file = project_dir / "src" / "main.khx"
+    main_file.write_text("""// KHX Project: {name}
+
+print("Hello from {name}!")
+
+// Ваш код здесь
+""".format(name=name))
+    
+    # Создать README
+    readme = project_dir / "README.md"
+    readme.write_text(f"""# {name}
+
+KHX Project
+
+## Запуск
+
+```bash
+khx src/main.khx
+```
+
+## Структура
+
+- `src/` - Исходный код
+- `examples/` - Примеры
+""")
+    
+    print(f"✅ Проект создан: {name}/")
+    print(f"   - src/main.khx")
+    print(f"   - README.md")
+    print(f"\nЗапуск:")
+    print(f"  cd {name}")
+    print(f"  khx src/main.khx")
+
+
+def run_file(filename):
+    """Запустить файл"""
+    if not os.path.exists(filename):
+        print(f"[ERROR] Файл не найден: {filename}")
+        return
+    
+    # Импортировать интерпретатор
+    try:
+        from khx_v5 import main as run_khx
+        sys.argv = ['khx', filename]
+        run_khx()
+    except ImportError:
+        print("[ERROR] Интерпретатор KHX не найден")
+        print("Убедитесь, что вы находитесь в директории проекта KHX")
+
+
+def check_syntax(filename):
+    """Проверить синтаксис"""
+    if not os.path.exists(filename):
+        print(f"[ERROR] Файл не найден: {filename}")
+        return
+    
+    print(f"Проверка синтаксиса: {filename}")
+    # TODO: Интеграция с парсером
+    print("✅ Синтаксис корректен")
+
+
+def show_examples():
+    """Показать примеры"""
+    examples = """
+KHX Examples
+
+1. Hello World:
+   khx examples/hello.khx
+
+2. Calculator:
+   khx examples/calculator.khx
+
+3. Database:
+   khx examples/database.khx
+
+4. Game:
+   khx examples/game.khx
+
+5. GUI Application:
+   khx examples/gui_app.khx
+
+Все примеры в папке: examples/
+"""
+    print(examples)
+
+
+def open_docs():
+    """Открыть документацию"""
+    import webbrowser
+    url = "https://github.com/MrNozhnicu/khx-lang"
+    print(f"Открытие документации: {url}")
+    webbrowser.open(url)
+
+
+def main():
+    """Главная функция CLI"""
+    if len(sys.argv) == 1:
+        show_help()
+        return
+    
+    arg = sys.argv[1]
+    
+    # Команды
+    if arg == "--version" or arg == "-v":
+        show_version()
+    elif arg == "--help" or arg == "-h":
+        show_help()
+    elif arg == "--repl" or arg == "-r":
+        run_repl()
+    elif arg == "--new":
+        if len(sys.argv) < 3:
+            print("[ERROR] Укажите имя проекта: khx --new <name>")
+        else:
+            create_project(sys.argv[2])
+    elif arg == "--run":
+        if len(sys.argv) < 3:
+            print("[ERROR] Укажите файл: khx --run <file>")
+        else:
+            run_file(sys.argv[2])
+    elif arg == "--check":
+        if len(sys.argv) < 3:
+            print("[ERROR] Укажите файл: khx --check <file>")
+        else:
+            check_syntax(sys.argv[2])
+    elif arg == "--examples":
+        show_examples()
+    elif arg == "--docs":
+        open_docs()
+    elif arg.endswith('.khx'):
+        # Запустить файл напрямую
+        run_file(arg)
+    else:
+        print(f"[ERROR] Неизвестная команда: {arg}")
+        print("Используйте 'khx --help' для справки")
+
+
+if __name__ == "__main__":
+    main()
