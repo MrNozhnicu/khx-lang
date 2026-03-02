@@ -1,14 +1,16 @@
-# KHX Programming Language
+# KHX Programming Language v5.2
 
 <div align="center">
 
-![KHX Logo](https://img.shields.io/badge/KHX-v5.1-blue?style=for-the-badge)
+![KHX Logo](https://img.shields.io/badge/KHX-v5.2-blue?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![Modules](https://img.shields.io/badge/Modules-22-orange?style=for-the-badge)
+![Functions](https://img.shields.io/badge/Functions-300+-red?style=for-the-badge)
 
 **Современный язык программирования с 22 модулями и 300+ функциями**
 
-[Возможности](#-возможности) • [Установка](#-установка) • [Примеры](#-примеры) • [Документация](#-документация)
+[Возможности](#-возможности) • [Установка](#-установка) • [CLI](#-khx-cli) • [Примеры](#-примеры) • [Документация](#-документация)
 
 </div>
 
@@ -18,223 +20,249 @@
 
 KHX - это полнофункциональный язык программирования, созданный для быстрой разработки приложений любой сложности. От простых скриптов до сложных GUI приложений, игр, ML моделей и мобильных приложений.
 
-### ✨ Ключевые особенности
+### 🎯 Почему KHX?
 
-- 🎨 **GUI Framework** - Создание графических интерфейсов
-- 🗄️ **Database** - Работа с SQLite базами данных
-- 🎮 **Game Engine** - 2D игровой движок
-- 🤖 **Machine Learning** - Нейронные сети и NLP
-- 📊 **Data Science** - DataFrame и визуализация
-- 🔐 **Cryptography** - Шифрование и безопасность
-- 📱 **Mobile Dev** - Android/iOS приложения
-- 🧪 **Testing** - Unit тесты и бенчмарки
-- 🔄 **Async/Await** - Асинхронное программирование
-- 📦 **Package Manager** - Управление зависимостями
-- 🎨 **Canvas** - 2D графика
-- 🌍 **i18n** - Интернационализация
-- 🔌 **Plugins** - Система плагинов
-- 📝 **Templates** - HTML шаблонизатор
-- 🗂️ **File Watcher** - Мониторинг файлов
-- 🎯 **Events** - Система событий
-- 🔍 **Debugging** - Отладка и профилирование
-- 🌈 **CLI Tools** - Цветной вывод
-- 🎵 **Audio/Video** - Обработка медиа
-- 🌐 **Networking** - REST API и WebSocket
+- ✅ **Все в одном**: 22 модуля из коробки - не нужно искать библиотеки
+- ✅ **Простой синтаксис**: Легко учить, легко читать
+- ✅ **Быстрая разработка**: Меньше кода, больше результата
+- ✅ **Кросс-платформенность**: Windows, Linux, macOS
+- ✅ **Open Source**: MIT License - используйте как хотите
+- ✅ **CLI инструмент**: Работайте прямо в терминале
+- ✅ **GUI редактор**: Визуальная среда разработки
+- ✅ **Богатая документация**: Туториалы, примеры, FAQ
+
+---
+
+## ✨ Возможности
+
+### 22 встроенных модуля
+
+| Модуль | Функций | Описание |
+|--------|---------|----------|
+| 🎨 **GUI Framework** | 20+ | Создание графических интерфейсов |
+| 🗄️ **Database** | 15+ | SQLite с ORM и транзакциями |
+| 🎮 **Game Engine** | 25+ | 2D игры с физикой и коллизиями |
+| 🤖 **Machine Learning** | 30+ | Нейросети, NLP, анализ текста |
+| 📊 **Data Science** | 22+ | DataFrame, визуализация, статистика |
+| 🔐 **Cryptography** | 20+ | Хеширование, JWT, шифрование |
+| 📱 **Mobile Dev** | 25+ | Android/iOS приложения |
+| 🧪 **Testing** | 15+ | Unit тесты, моки, бенчмарки |
+| 🔄 **Async/Await** | 10+ | Асинхронное программирование |
+| 📦 **Package Manager** | 10+ | Управление зависимостями |
+| 🎨 **Canvas** | 15+ | 2D графика и анимации |
+| 🌍 **i18n** | 8+ | Интернационализация |
+| 🔌 **Plugins** | 10+ | Система плагинов |
+| 📝 **Templates** | 8+ | HTML шаблонизатор |
+| 🗂️ **File Watcher** | 6+ | Мониторинг файлов |
+| 🎯 **Events** | 8+ | Система событий |
+| 🔍 **Debugging** | 12+ | Отладка и профилирование |
+| 🌈 **CLI Tools** | 12+ | Цветной вывод, прогресс-бары |
+| 🎵 **Audio/Video** | 20+ | Обработка медиа, микшер |
+| 🌐 **Network** | 10+ | REST API, WebSocket |
+| 💻 **OS Integration** | 15+ | Файлы, процессы, система |
+| 🌐 **Web Server** | 10+ | HTTP сервер с роутингом |
+
+**Итого**: 300+ функций для любых задач!
+
+---
 
 ## 📦 Установка
 
-### Из исходников
+### Вариант 1: Полная установка с CLI
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/yourusername/khx-lang.git
+git clone https://github.com/MrNozhnicu/khx-lang.git
 cd khx-lang
 
 # Установить зависимости
 pip install -r requirements.txt
 
-# Запустить редактор
-python editor.py
-
-# Или запустить программу
-python khx_v5.py examples/hello.khx
+# Установить KHX CLI
+python khx_cli_installer.py
 ```
 
-### Скомпилированный редактор
+После установки команда `khx` будет доступна везде!
 
-Скачайте `KHX-Editor.exe` из [Releases](https://github.com/MrNozhnicu/khx-lang/releases) и запустите.
+### Вариант 2: Только интерпретатор
+
+```bash
+# Запуск без установки
+python src/khx_v5.py your_script.khx
+```
+
+### Вариант 3: GUI редактор
+
+```bash
+# Визуальный редактор кода
+python editor.py
+```
+
+### Вариант 4: Собрать .exe (Windows)
+
+```bash
+pip install pyinstaller
+python build_exe.py
+```
+
+Результат: `dist/KHX-Editor.exe` (49 MB)
+
+---
+
+## 💻 KHX CLI
+
+### Основные команды
+
+```bash
+# Запустить программу
+khx script.khx
+
+# Интерактивный режим
+khx --repl
+
+# Создать новый проект
+khx --new my_project
+
+# Проверить синтаксис
+khx --check script.khx
+
+# Показать примеры
+khx --examples
+
+# Открыть документацию
+khx --docs
+
+# Показать версию
+khx --version
+
+# Справка
+khx --help
+```
+
+### Интерактивный режим (REPL)
+
+```bash
+$ khx --repl
+KHX REPL v5.2
+Введите 'exit' для выхода
+----------------------------------------
+khx> print("Hello, World!")
+Hello, World!
+
+khx> let x = 10
+khx> print(x * 2)
+20
+
+khx> exit
+До свидания!
+```
+
+### Создание проекта
+
+```bash
+$ khx --new my_app
+Создание проекта: my_app
+✅ Проект создан: my_app/
+   - src/main.khx
+   - README.md
+
+Запуск:
+  cd my_app
+  khx src/main.khx
+```
+
+Подробнее: [CLI Guide](docs/CLI_GUIDE.md)
+
+---
 
 ## 🎯 Быстрый старт
 
-### Hello World
+```bash
+# 1. Установить
+git clone https://github.com/MrNozhnicu/khx-lang.git
+cd khx-lang
+pip install -r requirements.txt
+python khx_cli_installer.py
 
-```khx
-print("Hello, World!")
+# 2. Попробовать REPL
+khx --repl
+
+# 3. Создать проект
+khx --new hello_app
+cd hello_app
+
+# 4. Запустить
+khx src/main.khx
 ```
 
-### Переменные и функции
-
-```khx
-let name = "KHX"
-let version = 5.0
-
-func greet(name: string) -> string {
-    return "Hello, " + name + "!"
-}
-
-print(greet(name))
-```
-
-### GUI приложение
-
-```khx
-let win = create_window("My App", 800, 600)
-add_label(win, "Welcome to KHX!")
-add_button(win, "Click me")
-show_window(win)
-run_app(win)
-```
-
-### База данных
-
-```khx
-let db = connect_database("sqlite", "data.db")
-db_execute(db, "CREATE TABLE users (id, name)")
-db_execute(db, "INSERT INTO users VALUES (1, 'John')")
-```
-
-### Machine Learning
-
-```khx
-let model = create_neural_network()
-let nlp = create_nlp()
-let sentiment = nlp_sentiment(nlp, "I love KHX!")
-print(sentiment)
-```
+---
 
 ## 📚 Документация
 
-### Синтаксис
+### Для начинающих
 
-```khx
-// Комментарии
-let x = 10              // Переменные
-let name = "John"       // Строки
+- 🚀 [Getting Started](docs/GETTING_STARTED.md) - Начало работы (30 мин)
+- 📖 [Tutorials](docs/TUTORIALS.md) - 8 подробных туториалов (2-3 часа)
+- ❓ [FAQ](docs/FAQ.md) - 50+ частых вопросов
+- 💻 [CLI Guide](docs/CLI_GUIDE.md) - Руководство по CLI
 
-// Функции с типами
-func add(a: int, b: int) -> int {
-    return a + b
-}
+### Справочники
 
-// Условия
-if (x > 5) {
-    print("Больше 5")
-} else {
-    print("Меньше или равно 5")
-}
+- 📘 [API Reference](docs/API_REFERENCE.md) - Все 300+ функций
+- 📦 [Installation](docs/INSTALLATION.md) - Установка
 
-// Циклы
-while (x > 0) {
-    print(x)
-    x = x - 1
-}
+### Для разработчиков
 
-// Рекурсия
-func factorial(n: int) -> int {
-    if (n <= 1) {
-        return 1
-    }
-    return n * factorial(n - 1)
-}
-```
+- 🤝 [Contributing](CONTRIBUTING.md) - Как внести вклад
 
-### Модули
+---
 
-Полный список модулей и функций смотрите в [API Reference](docs/API_REFERENCE.md)
+## 📊 Статистика
 
-## 🎨 Редактор кода
+- **Версия**: 5.2.0
+- **Модулей**: 22 (21 работают, 1 требует `requests`)
+- **Функций**: 300+
+- **Примеров**: 17 программ
+- **Строк кода**: 12,000+
+- **Документов**: 20+ файлов
+- **Тесты**: Все проходят ✅
 
-KHX поставляется с полнофункциональным редактором кода:
+---
 
-- ✅ Подсветка синтаксиса
-- ✅ Автодополнение
-- ✅ Нумерация строк
-- ✅ Файловый менеджер
-- ✅ Вкладки
-- ✅ Темная тема Dracula
-- ✅ Встроенный терминал
-- ✅ Запуск программ
+## 🗺️ Roadmap
 
-```bash
-python editor.py
-```
+### v5.2 (Текущая) ✅
+- ✅ KHX CLI инструмент
+- ✅ 300+ функций
+- ✅ 20+ документов
+- ✅ Интерактивный REPL
 
-## 📁 Структура проекта
+### v5.3 (Планируется)
+- 🔄 Оптимизация производительности
+- 🔄 Больше примеров
+- 🔄 Видео туториалы
+- 🔄 Онлайн playground
 
-```
-khx-lang/
-├── src/                    # Исходный код
-│   ├── khx.py             # Базовый интерпретатор
-│   ├── khx_v5.py          # v5.0 интерпретатор
-│   └── modules/           # Все модули
-├── examples/              # Примеры программ
-├── docs/                  # Документация
-├── editor.py              # Редактор кода
-├── requirements.txt       # Зависимости
-└── README.md             # Этот файл
-```
+### v6.0 (Будущее)
+- 🔮 JIT компиляция
+- 🔮 Нативный код
+- 🔮 Поддержка MySQL/PostgreSQL
+- 🔮 Веб-фреймворк
+- 🔮 Package registry
 
-## 🤝 Вклад в проект
-
-Мы приветствуем вклад в развитие KHX! 
-
-1. Fork репозитория
-2. Создайте ветку (`git checkout -b feature/amazing`)
-3. Commit изменения (`git commit -m 'Add amazing feature'`)
-4. Push в ветку (`git push origin feature/amazing`)
-5. Откройте Pull Request
-
-## 📊 Статус
-
-| Модуль | Статус | Версия |
-|--------|--------|--------|
-| Core Interpreter | ✅ | 5.0 |
-| GUI Framework | ✅ | 5.0 |
-| Database | ✅ | 5.0 |
-| Game Engine | ✅ | 5.0 |
-| ML & NLP | ✅ | 5.0 |
-| Data Science | ✅ | 5.0 |
-| Cryptography | ✅ | 5.0 |
-| Mobile Dev | ✅ | 5.0 |
-| Testing | ✅ | 5.0 |
-| Async/Await | ✅ | 5.0 |
-| Package Manager | ✅ | 5.0 |
-| Canvas | ✅ | 5.0 |
-| i18n | ✅ | 5.0 |
-| Plugins | ✅ | 5.0 |
-| Templates | ✅ | 5.0 |
-| File Watcher | ✅ | 5.0 |
-| Events | ✅ | 5.0 |
-| Debugging | ✅ | 5.0 |
-| CLI Tools | ✅ | 5.0 |
-| Audio/Video | ✅ | 5.0 |
-
-**21/22 модулей загружены** (Network требует `pip install requests`)
+---
 
 ## 📝 Лицензия
 
-MIT License - смотрите [LICENSE](LICENSE) для деталей
+MIT License - см. [LICENSE](LICENSE)
 
-## 🙏 Благодарности
-
-- Python за отличный язык
-- PyQt5 за GUI фреймворк
-- Все контрибьюторы проекта
+---
 
 ## 📞 Контакты
 
-- GitHub: [@MrNozhnicu](https://github.com/MrNozhnicu)
-- Issues: [GitHub Issues](https://github.com/MrNozhnicu/khx-lang/issues)
+- **GitHub**: https://github.com/MrNozhnicu/khx-lang
+- **Issues**: https://github.com/MrNozhnicu/khx-lang/issues
+- **Документация**: [docs/](docs/)
 
 ---
 
@@ -242,6 +270,8 @@ MIT License - смотрите [LICENSE](LICENSE) для деталей
 
 **Сделано с ❤️ для разработчиков**
 
-[⬆ Наверх](#khx-programming-language)
+**Star ⭐ this repo if you like it!**
+
+[⬆ Наверх](#khx-programming-language-v52)
 
 </div>
